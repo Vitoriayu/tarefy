@@ -1,8 +1,6 @@
 import 'package:app_tarefas/paginas/paginas_lista.dart';
 import 'package:flutter/material.dart';
 
-
-
 void main() {
   runApp(Meuapp());
 }

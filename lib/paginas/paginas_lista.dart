@@ -1,6 +1,7 @@
 import 'package:app_tarefas/modelo/objeto_data_hora.dart';
-import 'package:app_tarefas/widgets/itens_lista.dart';
+import 'package:app_tarefas/repositorio/repositorio.dart';
 import 'package:flutter/material.dart';
+import 'package:app_tarefas/widgets/itens_lista.dart';
 
 final TextEditingController email_controle = TextEditingController();
 
@@ -11,6 +12,7 @@ class Pagina_Lista extends StatefulWidget {
 
 class _Pagina_ListaState extends State<Pagina_Lista> {
   final TextEditingController mensagensControlador = TextEditingController();
+  final Repositorio objeto_repositorio = Repositorio();
 
   List<Data_Hora> Mensagens = [];
   Data_Hora? deletar_itens;
@@ -33,7 +35,7 @@ class _Pagina_ListaState extends State<Pagina_Lista> {
                         hintText: "Digite aqui"),
                   ),
                 ),
-                SizedBox(width: 8),
+                SizedBox(width: 7),
                 ElevatedButton(
                   onPressed: () {
                     String qualquercoisa = mensagensControlador.text;
@@ -42,6 +44,7 @@ class _Pagina_ListaState extends State<Pagina_Lista> {
                           titulo: qualquercoisa, data_hora: DateTime.now());
                       Mensagens.add(item_data_hora);
                     });
+                    objeto_repositorio.salvarLista(Mensagens);
                     mensagensControlador.clear();
                   },
                         style: ElevatedButton.styleFrom(
